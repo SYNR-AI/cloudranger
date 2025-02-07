@@ -8,6 +8,23 @@ New releases are automatically created in response to updates in cloud providers
 
 The inspiration for `cloudranger` came from a similar library found at https://github.com/kubernetes/registry.k8s.io, used by the Kubernetes OCI registry for redirecting requests to the appropriate cloud provider. We developed `cloudranger` to provide a standalone library adaptable for various projects, offering greater control for our specific use cases and minimizing the impact of upstream changes. Unlike the original project, which uses its own trie implementation, `cloudranger` depends on github.com/infobloxopen/go-trees. While both implementations have not been directly benchmarked against each other, their performance is expected to be comparable.
 
+## Supported Providers
+
+- [x] AWS
+- [x] GCP
+- [x] Azure
+- [x] Linode
+- [x] Cloudflare
+- [x] Fastly
+- [x] DigitalOcean
+- [x] Oracle Cloud
+- [ ] OVH
+- [ ] Vultr
+- [ ] Aliyun
+- [ ] Tencent Cloud
+- [ ] UCloud
+- [ ] Huawei Cloud
+
 ## Usage
 
 ```sh
@@ -49,13 +66,14 @@ make bench
 ```
 
 ```
-goos: linux
-goarch: amd64
-pkg: github.com/planetscale/cloudranger
-cpu: AMD EPYC 7B12
+goos: darwin
+goarch: arm64
+pkg: github.com/SYNR-AI/cloudranger
+cpu: Apple M1 Pro (proc 10:8:2)
+mem: 32 GB
 
-BenchmarkNew-16              396           3153591 ns/op         1084213 B/op      26089 allocs/op
-BenchmarkGetIP-16        6268292               194.8 ns/op            64 B/op          2 allocs/op
+BenchmarkNew-10               42          28786575 ns/op         9518694 B/op     233498 allocs/op
+BenchmarkGetIP-10        8359640               139.6 ns/op            64 B/op          2 allocs/op
 ```
 
 ## IP Range Database Updates
