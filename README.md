@@ -28,7 +28,7 @@ The inspiration for `cloudranger` came from a similar library found at https://g
 ## Usage
 
 ```sh
-go get github.com/SYNR-AI/cloudranger@v2
+go get github.com/SYNR-AI/cloudranger
 ```
 
 ```go
