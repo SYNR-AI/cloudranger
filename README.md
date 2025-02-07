@@ -1,6 +1,6 @@
 # cloudranger
 
-`cloudranger` is a Go library designed to identify cloud provider information from IP addresses, with current support for AWS and GCP.
+`cloudranger` is a Go library designed to identify cloud provider information from IP addresses.
 
 It functions without any external runtime dependencies, as IP range data is stored internally. Meant for high throughput, low-latency environments, `cloudranger` also focuses on rapid startup, loading in under 4ms. You can verify this on your system by running `make bench` and checking the `BenchmarkNew` results.
 
@@ -28,7 +28,7 @@ The inspiration for `cloudranger` came from a similar library found at https://g
 ## Usage
 
 ```sh
-go get github.com/planetscale/cloudranger
+go get github.com/SYNR-AI/cloudranger@v2
 ```
 
 ```go
@@ -37,7 +37,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/planetscale/cloudranger"
+	"github.com/SYNR-AI/cloudranger"
 )
 
 func main() {

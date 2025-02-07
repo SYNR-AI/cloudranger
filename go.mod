@@ -1,4 +1,4 @@
-module github.com/planetscale/cloudranger
+module github.com/SYNR-AI/cloudranger
 
 go 1.20
 
