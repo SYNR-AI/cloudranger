@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/planetscale/cloudranger"
+	"github.com/SYNR-AI/cloudranger"
 )
 
 type out struct {

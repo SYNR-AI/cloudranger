@@ -42,7 +42,7 @@ import (
 
 func main() {
 	ranger := cloudranger.New()
-	ipinfo, found := ranger.GetIP("3.5.140.101")
+	ipinfo, found := ranger.GetIP("40.121.67.30")
 	if found {
 		fmt.Printf("cloud: %s, region: %s\n", ipinfo.Cloud(), ipinfo.Region())
 	}
@@ -52,9 +52,9 @@ func main() {
 A small cli is included in [cmd/cloudranger](cmd/cloudranger). It is EXPERIMENTAL and its behavior, flags, and output is likely to change.
 
 ```sh
-$ go run cmd/cloudranger/main.go 3.5.140.101
+$ go run cmd/cloudranger/main.go 40.121.67.30
 
-{"cloud":"AWS","region":"ap-northeast-2"}
+{"cloud":"azure","region":"eastus"}
 ```
 
 ## Testing and Benchmarks
@@ -78,9 +78,22 @@ BenchmarkGetIP-10        8359640               139.6 ns/op            64 B/op   
 
 ## IP Range Database Updates
 
+```bash
+# download the latest ip ranges
+# and generate the zz_generated.go file
+go run cmd/gen/main.go
+```
+
 IP range data is sourced from:
 
 - AWS: https://ip-ranges.amazonaws.com/ip-ranges.json
 - GCP: https://www.gstatic.com/ipranges/cloud.json
-
-A GitHub Actions workflow is run weekly to update the IP range data if changed by the supported cloud providers. A new version is created and tagged if changes are detected. Use dependabot or renovate to automate updates to the latest version.
+- Azure: https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519
+	- json: https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_20250203.json
+- Linode: https://geoip.linode.com/
+- Cloudflare: https://www.cloudflare.com/ips/
+	- IPv4: https://www.cloudflare.com/ips-v4/
+	- IPv6: https://www.cloudflare.com/ips-v6/
+- Fastly CDN: https://api.fastly.com/public-ip-list
+- DigitalOcean: https://www.digitalocean.com/geo/google.csv
+- Oracle Cloud: https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json
